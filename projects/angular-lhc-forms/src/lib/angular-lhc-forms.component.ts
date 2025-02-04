@@ -34,8 +34,8 @@ export class AngularLhcFormsComponent implements OnInit, AfterViewInit {
 
 	ngAfterViewInit() {
 		console.log('LIB WORKS')
-		setTimeout(() => this.testLoad())
-		//this.testLoad();
+		//TODO: Fix synchronization issues
+		setTimeout(() => this.testLoad(), 1000)
 	}
 
 	private testLoad(){
