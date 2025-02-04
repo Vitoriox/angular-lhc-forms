@@ -1,7 +1,6 @@
 import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import * as testData from '../test/test-data-fhir.json'
-
-declare var LForms: any; // Type declaration for LForms
+import {AngularLhcFormsService} from './angular-lhc-forms.service';
 
 const SCRIPTS_SRC = [
 	'https://lhcforms-static.nlm.nih.gov/lforms-versions/36.3.2/webcomponent/assets/lib/zone.min.js',
@@ -24,7 +23,8 @@ export class AngularLhcFormsComponent implements OnInit, AfterViewInit {
 	@ViewChild('formContainer') formContainer!: ElementRef;
 
 	constructor(
-		private renderer: Renderer2
+		private renderer: Renderer2,
+		private lFormService: AngularLhcFormsService
 	) {}
 
 	ngOnInit() {
@@ -39,11 +39,7 @@ export class AngularLhcFormsComponent implements OnInit, AfterViewInit {
 	}
 
 	private testLoad(){
-		const options = {
-			prepopulate: true
-		};
-
-		LForms.Util.addFormToPage(testData, 'formContainer', options);
+		this.lFormService.addFormToPage(testData, 'formContainer', {prepopulate: true});
 	}
 
 	private loadScripts(urls: string[]): void {
