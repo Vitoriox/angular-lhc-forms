@@ -40,3 +40,5 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+/projects/angular-lhc-forms/node_modules/
+/projects/angular-lhc-forms/package-lock.json
